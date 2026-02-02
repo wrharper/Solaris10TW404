@@ -415,32 +415,18 @@ Connect to MySQL:
 
 Enter your root password.
 
-Create the gamedb user with multiple host entries to allow connections from any source:
+Create the gamedb user for the hostname 'unknown' (the game server reports as 'unknown' when connecting):
 
 ```sql
-CREATE USER 'gamedb'@'%' IDENTIFIED BY 'vlql=nrt';
-GRANT ALL PRIVILEGES ON *.* TO 'gamedb'@'%' WITH GRANT OPTION;
-UPDATE `mysql`.`user` SET `Password`='6e4637a643a8fc2b' WHERE `Host`='%' AND `User`='gamedb';
-FLUSH PRIVILEGES;
-```
-
-Also create entries for localhost and the specific hostname for compatibility:
-
-```sql
-CREATE USER 'gamedb'@'localhost' IDENTIFIED BY 'vlql=nrt';
-GRANT ALL PRIVILEGES ON *.* TO 'gamedb'@'localhost' WITH GRANT OPTION;
-UPDATE `mysql`.`user` SET `Password`='6e4637a643a8fc2b' WHERE `Host`='localhost' AND `User`='gamedb';
-
-CREATE USER 'gamedb'@'TWServer' IDENTIFIED BY 'vlql=nrt';
-GRANT ALL PRIVILEGES ON *.* TO 'gamedb'@'TWServer' WITH GRANT OPTION;
-UPDATE `mysql`.`user` SET `Password`='6e4637a643a8fc2b' WHERE `Host`='TWServer' AND `User`='gamedb';
-
+CREATE USER 'gamedb'@'unknown' IDENTIFIED BY 'vlql=nrt';
+GRANT ALL PRIVILEGES ON *.* TO 'gamedb'@'unknown' WITH GRANT OPTION;
+UPDATE `mysql`.`user` SET `Password`='6e4637a643a8fc2b' WHERE `Host`='unknown' AND `User`='gamedb';
 FLUSH PRIVILEGES;
 ```
 
 **Note:** Do NOT change the values `vlql=nrt`, `6e4637a643a8fc2b`, or `gamedb` - these are required by the TalesWeaver server.
 
-**Important:** The `'%'` entry allows the gamedb user to connect from any hostname, which is necessary because the game server may report as 'unknown' or other hostnames. The multiple host entries ensure compatibility in all scenarios.
+**Important:** The game server reports its hostname as 'unknown' when connecting to MySQL, so the user must be created for the 'unknown' host exactly.
 
 Create game databases:
 
@@ -918,25 +904,7 @@ start InphaseNXD.EXE /USE_SERVER 12 /ADDR 4178206210 /PORT 40000
 goto end
 ```
 
-**Alternatively:** Use an online IP to Long calculator, but **reverse the IP octets**:
-- For IP 10.0.0.249, enter as: 249.0.0.10
-
-### Step 14.4: (Optional) Locale Emulator
-
-If you have Locale Emulator installed:
-
-1. Right click on `InphaseNXD.EXE` → **Locale Emulator** → **Modify Application Profile**
-2. In "Enter argument here", put:
-   ```
-   /USE_SERVER 12 /ADDR 4178206210 /PORT 40000
-   ```
-3. For Location, select **Japanese (Japan)**
-4. Click **Create Shortcut**
-
-Next time you run the client:
-- Right click `InphaseNXD.EXE` → **Locale Emulator** → **Run with Application Profile**
-
-### Step 14.5: Test Login
+### Step 14.4: Test Login
 
 Launch the game with your batch file.
 
