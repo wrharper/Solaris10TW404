@@ -60,8 +60,9 @@ public partial class MainWindow : Window
             return;
         }
 
-        // Formula: (octet[0] × 256³) + (octet[1] × 256²) + (octet[2] × 256) + octet[3]
-        long decimalValue = (bytes[0] * 16777216L) + (bytes[1] * 65536L) + (bytes[2] * 256L) + bytes[3];
+        // Formula for IP a.b.c.d: (d × 256³) + (c × 256²) + (b × 256) + a
+        // bytes[0]=a, bytes[1]=b, bytes[2]=c, bytes[3]=d
+        long decimalValue = (bytes[3] * 16777216L) + (bytes[2] * 65536L) + (bytes[1] * 256L) + bytes[0];
 
         ResultOutput.Text = decimalValue.ToString();
     }

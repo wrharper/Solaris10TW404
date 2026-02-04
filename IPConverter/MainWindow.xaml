@@ -52,8 +52,8 @@
                        TextWrapping="Wrap" Margin="0,0,0,8" MinHeight="44"/>
             
             <TextBlock FontSize="10" Foreground="#707070" TextWrapping="Wrap">
-                <Run>Formula: </Run>
-                <Run FontFamily="Courier New" Foreground="#808080">(byte[0]×256³) + (byte[1]×256²) + (byte[2]×256) + byte[3]</Run>
+                <Run>Formula for IP a.b.c.d: </Run>
+                <Run FontFamily="Courier New" Foreground="#808080">(d×256³) + (c×256²) + (b×256) + a</Run>
             </TextBlock>
         </StackPanel>
     </Grid>
