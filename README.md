@@ -904,6 +904,17 @@ start InphaseNXD.EXE /USE_SERVER 12 /ADDR 4178206210 /PORT 40000
 goto end
 ```
 
+**Alternate example (clarifying reversed-octet math)**
+
+If your server IP is `192.168.1.200` the conversion follows the same reversed-octet formula used by the launcher:
+
+```
+{ [ 200 * 256^3 ] + [ 1 * 256^2 ] + [ 168 * 256^1 ] + 192 } = 3355551936
+```
+
+So use `/ADDR 3355551936` in the batch file. Enter your IP normally (e.g. `192.168.1.200`) — the conversion treats the last octet as the highest-order byte.
+
+
 ### Step 14.4: Test Login
 
 Launch the game with your batch file.

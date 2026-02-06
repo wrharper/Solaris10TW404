@@ -5,7 +5,7 @@ namespace IPConverter;
 
 public partial class MainWindow : Window
 {
-    private const string Placeholder = "Example: 67.173.216.42";
+    private const string Placeholder = "Example: 192.168.1.200";
 
     public MainWindow()
     {
@@ -60,8 +60,10 @@ public partial class MainWindow : Window
             return;
         }
 
-        // Formula: (octet[0] × 256³) + (octet[1] × 256²) + (octet[2] × 256) + octet[3]
-        long decimalValue = (bytes[0] * 16777216L) + (bytes[1] * 65536L) + (bytes[2] * 256L) + bytes[3];
+        // Game client expects the octets reversed when converted to a single number.
+        // Use: (octet[3] × 256³) + (octet[2] × 256²) + (octet[1] × 256) + octet[0]
+        // Example: 192.168.1.200 -> [192,168,1,200] -> (200*256^3)+(1*256^2)+(168*256)+192 = 3355551936
+        long decimalValue = (bytes[3] * 16777216L) + (bytes[2] * 65536L) + (bytes[1] * 256L) + bytes[0];
 
         ResultOutput.Text = decimalValue.ToString();
     }

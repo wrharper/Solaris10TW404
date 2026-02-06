@@ -52,8 +52,12 @@
                        TextWrapping="Wrap" Margin="0,0,0,8" MinHeight="44"/>
             
             <TextBlock FontSize="10" Foreground="#707070" TextWrapping="Wrap">
-                <Run>Formula: </Run>
-                <Run FontFamily="Courier New" Foreground="#808080">(byte[0]×256³) + (byte[1]×256²) + (byte[2]×256) + byte[3]</Run>
+                <Run>Formula (what the game expects): </Run>
+                <Run FontFamily="Courier New" Foreground="#808080">(byte[3]×256³) + (byte[2]×256²) + (byte[1]×256) + byte[0]</Run>
+            </TextBlock>
+            <TextBlock FontSize="10" Foreground="#707070" TextWrapping="Wrap" Margin="0,6,0,0">
+                <Run>Example: </Run>
+                <Run FontFamily="Courier New" Foreground="#808080">192.168.1.200 → 3355551936</Run>
             </TextBlock>
         </StackPanel>
     </Grid>
