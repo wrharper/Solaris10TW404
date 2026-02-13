@@ -5,3 +5,7 @@
 /.vs
 /IPConverter/.vs/IPConverter
 /IPConverter/obj
+/IPConverter/bin/Debug/net10.0-windows/IPConverter.dll
+/IPConverter/bin/Debug/net10.0-windows/IPConverter.exe
+/IPConverter/bin/Debug/net10.0-windows/IPConverter.pdb
+/IPConverter/bin/Debug/net10.0-windows/IPConverter.zip
